@@ -4,7 +4,7 @@
 export const config = {
   // API Configuration
   API_BASE_URL: process.env.NEXT_PUBLIC_API_URL,
-  SOCKET_URL: process.env.NEXT_PUBLIC_SOCKET_URL ,
+  SOCKET_URL: process.env.NEXT_PUBLIC_SOCKET_URL,
   
   // Environment
   IS_PRODUCTION: process.env.NODE_ENV === "production",
