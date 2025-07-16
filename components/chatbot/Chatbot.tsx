@@ -10,7 +10,7 @@ export default function Chatbot() {
 
   useEffect(() => {
     if (!socketRef.current) {
-      socketRef.current = io("http://localhost:5000", {
+      socketRef.current = io("http://18.188.242.116:5000", {
         transports: ["websocket"],
         reconnection: true,
         reconnectionAttempts: 5,
@@ -34,7 +34,7 @@ export default function Chatbot() {
 
     const fetchMessages = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/chat/messages");
+        const res = await fetch("http://18.188.242.116:5000/api/chat/messages");
         const data = await res.json();
         setMessages(data);
       } catch (err) {
@@ -71,7 +71,7 @@ export default function Chatbot() {
     }
 
     try {
-      await fetch("http://localhost:5000/api/chat/send-message", {
+      await fetch("http://18.188.242.116:5000/api/chat/send-message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),

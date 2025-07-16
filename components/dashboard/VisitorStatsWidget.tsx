@@ -16,7 +16,7 @@ export default function VisitorStatsWidget() {
   useEffect(() => {
     const fetchVisitorData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/analytics/visitors");
+        const res = await axios.get("http://18.188.242.116:5000/api/analytics/visitors");
         setCount(res.data.visitorCount);
 
         // ✨ Simulated trend for now

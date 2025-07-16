@@ -26,7 +26,7 @@ export const ClearedQueriesTable = () => {
   const itemsPerPage = 2;
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/quotation-queries")
+    axios.get("http://18.188.242.116:5000/api/quotation-queries")
       .then((res) => setQueries(res.data))
       .catch((err) => console.error(err));
   }, []);

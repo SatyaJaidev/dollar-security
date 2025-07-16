@@ -26,7 +26,7 @@ export const QuotationTable = () => {
   const itemsPerPage = 2;
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/quotation-queries")
+    axios.get("http://18.188.242.116:5000/api/quotation-queries")
       .then((res) => setQueries(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -36,7 +36,7 @@ export const QuotationTable = () => {
   }, [queries]);
 
   const markCleared = async (id: string) => {
-    await axios.put(`http://localhost:5000/api/quotation-queries/${id}`, { status: "Cleared" });
+    await axios.put(`http://18.188.242.116:5000/api/quotation-queries/${id}`, { status: "Cleared" });
     setQueries((prev) => prev.map(q => q._id === id ? { ...q, status: "Cleared" } : q));
   };
 

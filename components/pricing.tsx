@@ -38,7 +38,7 @@ export function Pricing() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/quotation-queries", formData);
+      await axios.post("http://18.188.242.116:5000/api/quotation-queries", formData);
       setSubmitted(true);
       setFormData({
         name: "",

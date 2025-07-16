@@ -48,7 +48,7 @@ export default function GuardsPage() {
   const filterRef = useRef<HTMLDivElement>(null);
 
   const fetchGuards = async () => {
-    const res = await fetch("http://localhost:5000/api/guards");
+    const res = await fetch("http://18.188.242.116:5000/api/guards");
     const data = await res.json();
     setGuards(data);
   };

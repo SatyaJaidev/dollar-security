@@ -1,13 +1,12 @@
 // lib/socket.ts
 import { io, Socket } from "socket.io-client";
-
-const URL = "http://localhost:5000";
+import { getSocketUrl } from "./config";
 
 let socket: Socket | null = null;
 
 export const getSocket = (): Socket => {
   if (!socket) {
-    socket = io(URL, {
+    socket = io(getSocketUrl(), {
       transports: ["websocket"],
       reconnection: true,
       reconnectionAttempts: 5,

@@ -26,7 +26,7 @@ export default function ClientsPage() {
   // ✅ Fetch all clients
   const fetchClients = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/clients");
+      const res = await axios.get("http://18.188.242.116:5000/api/clients");
       setClients(res.data);
     } catch (err) {
       console.error("Failed to fetch clients:", err);
@@ -53,11 +53,11 @@ export default function ClientsPage() {
     try {
       if (clientToEdit) {
         await axios.put(
-          `http://localhost:5000/api/clients/${clientToEdit._id}`,
+          `http://18.188.242.116:5000/api/clients/${clientToEdit._id}`,
           client
         );
       } else {
-        await axios.post("http://localhost:5000/api/clients", client);
+        await axios.post("http://18.188.242.116:5000/api/clients", client);
       }
 
       await fetchClients(); // 🔁 Get updated list after mutation
@@ -75,7 +75,7 @@ export default function ClientsPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:5000/api/clients/${id}`);
+      await axios.delete(`http://18.188.242.116:5000/api/clients/${id}`);
       fetchClients(); // Refresh after deletion
     } catch (err) {
       console.error("Failed to delete client:", err);

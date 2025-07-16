@@ -12,7 +12,7 @@ export default function QuotationQueriesPage() {
   useEffect(() => {
     const fetchCount = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/quotation-queries");
+        const res = await axios.get("http://18.188.242.116:5000/api/quotation-queries");
         const pending = res.data.filter((q: any) => q.status === "Pending");
         setPendingCount(pending.length);
       } catch (err) {

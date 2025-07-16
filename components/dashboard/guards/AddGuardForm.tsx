@@ -82,7 +82,7 @@ export default function AddGuardForm({
       formData.append("document", file);
 
       try {
-        const res = await fetch("http://localhost:5000/api/upload", {
+        const res = await fetch("http://18.188.242.116:5000/api/upload", {
           method: "POST",
           body: formData,
         });
@@ -126,7 +126,7 @@ export default function AddGuardForm({
     };
     console.log("Submitting payload:", payload); // TEMP LOG
   
-    const res = await fetch("http://localhost:5000/api/guards", {
+    const res = await fetch("http://18.188.242.116:5000/api/guards", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -165,8 +165,8 @@ export default function AddGuardForm({
     };
   
     const url = guardToEdit
-      ? `http://localhost:5000/api/guards/${guardToEdit._id}`
-      : "http://localhost:5000/api/guards";
+      ? `http://18.188.242.116:5000/api/guards/${guardToEdit._id}`
+      : "http://18.188.242.116:5000/api/guards";
   
     const method = guardToEdit ? "PUT" : "POST";
   

@@ -54,7 +54,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
     }
   
     try {
-      const res = await fetch("http://localhost:5000/api/guards/submit-feedback"), {
+      const res = await fetch("http://18.188.242.116:5000/api/guards/submit-feedback"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -286,7 +286,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/guards/submit-feedback", {
+      const res = await fetch("http://18.188.242.116:5000/api/guards/submit-feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

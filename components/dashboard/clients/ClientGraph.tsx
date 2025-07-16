@@ -30,7 +30,7 @@ export const ClientGraph = ({ clients }: Props) => {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/quotation-queries");
+        const res = await axios.get("http://18.188.242.116:5000/api/quotation-queries");
         setQueries(res.data);
       } catch (err) {
         console.error("Failed to fetch quotation queries:", err);
