@@ -10,8 +10,8 @@ Create a `.env.local` file in your project root:
 
 ```bash
 # API Configuration
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-NEXT_PUBLIC_SOCKET_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=http://18.188.242.116:5000/api
+NEXT_PUBLIC_SOCKET_URL=http://18.188.242.116:5000
 
 # For production, change to your actual domain:
 # NEXT_PUBLIC_API_URL=https://your-domain.com/api
@@ -68,7 +68,7 @@ Replace hardcoded fetch/axios calls with the centralized API service:
 
 ```typescript
 // ❌ Old way (hardcoded)
-const res = await fetch("http://localhost:5000/api/guards");
+const res = await fetch("http://18.188.242.116:5000/api/guards");
 
 // ✅ New way (using centralized API)
 import { guardsAPI } from "@/lib/api";
@@ -80,7 +80,7 @@ Replace hardcoded socket URLs with the centralized config:
 
 ```typescript
 // ❌ Old way (hardcoded)
-socketRef.current = io("http://localhost:5000", {...});
+socketRef.current = io("http://18.188.242.116:5000", {...});
 
 // ✅ New way (using centralized config)
 import { getSocketUrl } from "@/lib/config";
@@ -91,8 +91,8 @@ socketRef.current = io(getSocketUrl(), {...});
 
 ### **Development:**
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-NEXT_PUBLIC_SOCKET_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=http://18.188.242.116:5000/api
+NEXT_PUBLIC_SOCKET_URL=http://18.188.242.116:5000
 ```
 
 ### **Production:**

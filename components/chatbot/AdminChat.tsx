@@ -10,7 +10,7 @@ export default function AdminChat() {
 
   useEffect(() => {
     if (!socketRef.current) {
-      socketRef.current = io("http://localhost:5000", {
+      socketRef.current = io("http://18.188.242.116:5000", {
         transports: ["websocket"],
         reconnection: true,
         reconnectionAttempts: 5,
