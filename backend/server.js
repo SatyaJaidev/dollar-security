@@ -7,6 +7,8 @@ const { Server } = require("socket.io");
 const connectDB = require("./config/db");
 const analyticsRoutes = require("./routes/analyticsRoutes");
 const guardController = require("./controllers/guardController");
+const { initAnalytics } = require("./config/analytics");
+initAnalytics();
 
 // Route Imports
 const clientRoutes = require("./routes/clientRoutes");

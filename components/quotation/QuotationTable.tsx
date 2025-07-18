@@ -52,12 +52,12 @@ export const QuotationTable = () => {
   const handleNext = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
 
   return (
-    <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-3 lg:p-6 h-[350px] flex flex-col mb-4 lg:mb-8">
+    <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-3 lg:p-6 flex flex-col">
       <h2 className="text-lg lg:text-2xl font-bold mb-4 lg:mb-6 text-[#A3A375]">QUOTATION QUERIES (PENDING)</h2>
       
       {/* Mobile/Tablet Horizontal Scroll Container */}
-      <div className="overflow-x-auto overflow-y-hidden">
-        <div className="min-w-[700px]"> {/* Minimum width for table content */}
+      <div className="flex-1 overflow-hidden">
+        <div className="min-w-[700px] h-full flex flex-col"> {/* Minimum width for table content */}
           {/* Fixed Header */}
           <div className="grid grid-cols-[40px_40px_1fr_1.5fr_1fr_1fr_0.8fr] gap-2 px-3 lg:px-4 py-2 lg:py-3 bg-[#A3A375] rounded-2xl text-white font-bold text-xs lg:text-sm uppercase mb-2 lg:mb-4">
             <div></div>
@@ -70,7 +70,7 @@ export const QuotationTable = () => {
           </div>
 
           {/* Scrollable Table Body */}
-          <div className="flex-1 overflow-y-auto space-y-2 h-[250px] pb-4">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden space-y-2 min-h-[400px] max-h-[600px]">
             {paginatedQueries.map((query, index) => {
               const isOpen = openRow === query._id;
 

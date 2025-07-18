@@ -24,11 +24,11 @@ export default function QuotationQueriesPage() {
   }, []);
 
   return (
-    <div className="pt-1 pb-6 px-3 lg:px-6">
+    <div className="h-full flex flex-col pt-1 pb-6 px-3 lg:px-6 overflow-hidden">
       <div className="mb-2">
         <h1 className="text-2xl lg:text-6xl font-bold text-white ml-2 lg:ml-0">QUOTATION</h1>
       </div>
-      <div className="space-y-4 lg:space-y-6">
+      <div className="flex-1 overflow-y-auto space-y-4 lg:space-y-6">
         <QuotationTable />
         <ClearedQueriesTable />
       </div>
