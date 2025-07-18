@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
+import { getApiUrl } from "@/lib/config"; 
 import { Guard } from "../../../app/dashboard/admin/guards/page";
 import React from "react";
 import { FaChevronDown, FaTrash } from 'react-icons/fa';
@@ -169,23 +170,35 @@ export default function GuardsTable({ guards }: { guards: Guard[] }) {
   };
   
   
-  const handleOtherDocUpload = async (guardId: string, file: File | undefined) => {
+  async function handleOtherDocUpload(guardId: string, file?: File) {
     if (!file) return;
+    console.log("⏳ Uploading ‘other’ doc to:", getApiUrl(`/guards/upload-other/${guardId}`), file.name);
+  
     const formData = new FormData();
     formData.append("file", file);
+  
     try {
-      const res = await fetch(`${API_BASE_URL}/guards/upload-other/${guardId}`, {
+      const res = await fetch(getApiUrl(`/guards/upload-other/${guardId}`), {
         method: "POST",
         body: formData,
       });
-      if (!res.ok) throw new Error("Upload failed");
+  
+      if (!res.ok) {
+        const text = await res.text();
+        console.error("🛑  /upload-other error", res.status, text);
+        toast.error(`Upload failed: ${res.status}`);
+        return;
+      }
+  
+      const data = await res.json();
+      console.log("✅ upload-other response:", data);
       toast.success("Other document uploaded!");
       window.location.reload();
-    } catch (error) {
-      console.error("Upload error:", error);
-      toast.error("Failed to upload document");
+    } catch (err) {
+      console.error("🚨 handleOtherDocUpload caught:", err);
+      toast.error("Upload error – check console.");
     }
-  };
+  }
 
   const handleDeleteGuard = async (guardId: string) => {
     try {

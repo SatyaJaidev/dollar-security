@@ -7,6 +7,7 @@ import { AddClientModal } from "@/components/dashboard/clients/AddClientModal";
 import { ClientTable } from "@/components/dashboard/clients/ClientTable";
 import { ClientGraph } from "@/components/dashboard/clients/ClientGraph";
 import { FiSearch, FiFilter, FiChevronDown, FiArrowUp, FiArrowDown, FiX, FiPlus } from 'react-icons/fi';
+import { getApiUrl } from "@/lib/config";
 import { Suspense } from 'react';
 import { getClients } from '@/lib/api';
 
@@ -26,7 +27,7 @@ export default function ClientsPage() {
   // ✅ Fetch all clients
   const fetchClients = async () => {
     try {
-      const res = await axios.get("http://18.188.242.116:5000/api/clients");
+      const res = await axios.get(getApiUrl("/clients"));
       setClients(res.data);
     } catch (err) {
       console.error("Failed to fetch clients:", err);
@@ -52,12 +53,9 @@ export default function ClientsPage() {
   const handleAddClient = async (client: Client) => {
     try {
       if (clientToEdit) {
-        await axios.put(
-          `http://18.188.242.116:5000/api/clients/${clientToEdit._id}`,
-          client
-        );
+        await await axios.put(getApiUrl(`/clients/${clientToEdit._id}`), client);
       } else {
-        await axios.post("http://18.188.242.116:5000/api/clients", client);
+        await await axios.post(getApiUrl("/clients"), client);
       }
 
       await fetchClients(); // 🔁 Get updated list after mutation
@@ -75,7 +73,7 @@ export default function ClientsPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`http://18.188.242.116:5000/api/clients/${id}`);
+      await axios.delete(getApiUrl(`/clients/${id}`));
       fetchClients(); // Refresh after deletion
     } catch (err) {
       console.error("Failed to delete client:", err);

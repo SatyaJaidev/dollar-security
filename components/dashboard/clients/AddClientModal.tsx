@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Client } from "@/types/client";
 import { Guard } from "../../../app/dashboard/admin/guards/page";
 import { FiX } from 'react-icons/fi';
+import { getApiUrl } from "@/lib/config";
 
 interface Props {
   isOpen: boolean;
@@ -49,7 +50,7 @@ export const AddClientModal = ({ isOpen, onClose, onAddClient, clientToEdit }: P
 
   useEffect(() => {
     const fetchGuards = async () => {
-      const res = await fetch("http://18.188.242.116:5000/api/guards");
+      const res = await fetch(getApiUrl("/guards"));
       const data = await res.json();
       setAvailableGuards(data);
     };

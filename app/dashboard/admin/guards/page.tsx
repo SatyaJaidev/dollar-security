@@ -4,6 +4,7 @@ import AddGuardForm from "../../../../components/dashboard/guards/AddGuardForm";
 import GuardsTable from "../../../../components/dashboard/guards/GuardsTable";
 import { AddGuardModal } from "../../../../components/dashboard/guards/AddGuardModal";
 import { FiSearch, FiFilter, FiChevronDown, FiArrowUp, FiArrowDown, FiX, FiPlus } from 'react-icons/fi';
+import { getApiUrl } from "@/lib/config";
 
 export interface Guard {
   _id?: string;
@@ -48,7 +49,7 @@ export default function GuardsPage() {
   const filterRef = useRef<HTMLDivElement>(null);
 
   const fetchGuards = async () => {
-    const res = await fetch("http://18.188.242.116:5000/api/guards");
+    const res = await fetch(getApiUrl("/guards"));
     const data = await res.json();
     setGuards(data);
   };

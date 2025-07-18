@@ -21,8 +21,8 @@ interface LoginFormProps {
   onClose: () => void
 }
 
-const HARDCODED_EMAIL = "admin@gmail.com"
-const HARDCODED_PASSWORD = "Admin@123"
+const HARDCODED_EMAIL = "Dollarsecurite@gmail.com"
+const HARDCODED_PASSWORD = "Dufrunen@1998"
 
 export function LoginForm({ isOpen, onClose }: LoginFormProps) {
   const [email, setEmail] = useState("")

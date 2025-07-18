@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import axios from "axios";
+import { getApiUrl } from "@/lib/config";
 import { ArrowRight } from "lucide-react";
 
 export function Pricing() {
@@ -18,6 +19,7 @@ export function Pricing() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  
 
   // Ref for scroll animation
   const pricingRef = useRef<HTMLDivElement>(null);
@@ -38,7 +40,8 @@ export function Pricing() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://18.188.242.116:5000/api/quotation-queries", formData);
+      const url = getApiUrl("/quotation-queries");
+      await axios.post(url, formData);
       setSubmitted(true);
       setFormData({
         name: "",

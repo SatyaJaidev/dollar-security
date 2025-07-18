@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
 import { FaChevronDown } from 'react-icons/fa';
+import { getApiUrl } from "@/lib/config";
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 interface QuotationQuery {
@@ -26,7 +27,7 @@ export const ClearedQueriesTable = () => {
   const itemsPerPage = 2;
 
   useEffect(() => {
-    axios.get("http://18.188.242.116:5000/api/quotation-queries")
+    axios.get(getApiUrl("/quotation-queries"))
       .then((res) => setQueries(res.data))
       .catch((err) => console.error(err));
   }, []);

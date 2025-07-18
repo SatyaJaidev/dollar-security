@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import { getApiUrl } from "@/lib/config";
 
 export default function VisitorStatsWidget() {
   const [count, setCount] = useState<number | null>(null);
@@ -16,7 +17,7 @@ export default function VisitorStatsWidget() {
   useEffect(() => {
     const fetchVisitorData = async () => {
       try {
-        const res = await axios.get("http://18.188.242.116:5000/api/analytics/visitors");
+        const res = await axios.get(getApiUrl("/analytics/visitors"));
         setCount(res.data.visitorCount);
 
         // ✨ Simulated trend for now

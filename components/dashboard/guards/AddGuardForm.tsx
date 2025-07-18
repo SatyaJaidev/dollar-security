@@ -1,5 +1,6 @@
 "use client";
 
+import { getApiUrl } from "@/lib/config";
 import { useState } from "react";
 import { Guard } from "../../../app/dashboard/admin/guards/page";
 import { v4 as uuidv4 } from 'uuid';
@@ -82,10 +83,16 @@ export default function AddGuardForm({
       formData.append("document", file);
 
       try {
-        const res = await fetch("http://18.188.242.116:5000/api/upload", {
+        const res = await fetch(getApiUrl("/upload"), {
           method: "POST",
           body: formData,
         });
+        if (!res.ok) {
+          // grab the raw text so you can see the HTML or error message
+          const text = await res.text();
+          console.error("🛑 Upload API error", res.status, text);
+          return;  // bail out, don’t call res.json()
+        }
         const data = await res.json();
         uploaded.push({
           _id: uuidv4(),
@@ -165,8 +172,8 @@ export default function AddGuardForm({
     };
   
     const url = guardToEdit
-      ? `http://18.188.242.116:5000/api/guards/${guardToEdit._id}`
-      : "http://18.188.242.116:5000/api/guards";
+      ? getApiUrl(`/guards/${guardToEdit._id}`)
+      : getApiUrl("/guards");
   
     const method = guardToEdit ? "PUT" : "POST";
   

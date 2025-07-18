@@ -4,6 +4,7 @@ import axios from "axios";
 import React from "react";
 import { FaChevronDown } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { getApiUrl } from "@/lib/config";
 
 interface QuotationQuery {
   _id: string;
@@ -26,7 +27,7 @@ export const QuotationTable = () => {
   const itemsPerPage = 2;
 
   useEffect(() => {
-    axios.get("http://18.188.242.116:5000/api/quotation-queries")
+    axios.get(getApiUrl("/quotation-queries"))
       .then((res) => setQueries(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -36,7 +37,7 @@ export const QuotationTable = () => {
   }, [queries]);
 
   const markCleared = async (id: string) => {
-    await axios.put(`http://18.188.242.116:5000/api/quotation-queries/${id}`, { status: "Cleared" });
+    await axios.put(getApiUrl(`/quotation-queries/${id}`), { status: "Cleared" })
     setQueries((prev) => prev.map(q => q._id === id ? { ...q, status: "Cleared" } : q));
   };
 

@@ -10,10 +10,10 @@ import RecentClients from "../../../components/dashboard/clients/RecentClients";
 import SmartAdminAssistant from "@/components/dashboard/SmartAdminAssistant";
 import { Client } from "@/types/client";
 import { Toaster } from "react-hot-toast";
+import { getApiUrl } from "@/lib/config";
 import { FiSearch, FiFilter, FiChevronDown, FiArrowUp, FiArrowDown, FiX, FiPlus, FiMenu } from 'react-icons/fi';
 
-// API Configuration
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -34,7 +34,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   useEffect(() => {
     const fetchCount = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/quotation-queries`);
+        const res = await axios.get(getApiUrl("/quotation-queries"));
         const pending = res.data.filter((q: any) => q.status === "Pending");
         setQuotationCount(pending.length);
       } catch (err) {
@@ -44,7 +44,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
     const fetchGuardNotifications = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/guards/unread-reviews-count`);
+        const res = await axios.get(getApiUrl("/guards/unread-reviews-count"));
         setGuardNotificationCount(res.data.unreadCount);
       } catch (err) {
         console.error("Failed to fetch guard notification count:", err);
@@ -53,7 +53,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
     const fetchClients = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/clients`);
+        console.log("➡️ fetching clients from:", getApiUrl("/clients"));
+        const res = await axios.get(getApiUrl("/clients"));
         setClients(res.data);
         setClientCount(res.data.length);
       } catch (err) {
@@ -63,7 +64,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
     const fetchGuards = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/guards`);
+        const res = await axios.get(getApiUrl("/guards"));
         setGuardCount(res.data.length);
       } catch (err) {
         console.error("Failed to fetch guards:", err);
@@ -83,7 +84,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         try {
           // Add proper headers and configuration for the PUT request
           const response = await axios.put(
-            `${API_BASE_URL}/guards/mark-reviews-read`,
+            getApiUrl("/guards/mark-reviews-read"),
             {}, // Empty body
             {
               headers: {

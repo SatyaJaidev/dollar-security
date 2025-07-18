@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getApiUrl } from "@/lib/config";
 
 import { QuotationTable } from "../../../../components/quotation/QuotationTable";
 import { ClearedQueriesTable } from "../../../../components/quotation/ClearedQueriesTable";
@@ -12,7 +13,7 @@ export default function QuotationQueriesPage() {
   useEffect(() => {
     const fetchCount = async () => {
       try {
-        const res = await axios.get("http://18.188.242.116:5000/api/quotation-queries");
+        const res = await axios.get(getApiUrl("/quotation-queries"));
         const pending = res.data.filter((q: any) => q.status === "Pending");
         setPendingCount(pending.length);
       } catch (err) {

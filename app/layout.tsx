@@ -1,28 +1,3 @@
-/*
-import "./globals.css";
-import { Inter } from "next/font/google";
-import { AuthProvider } from "@/context/AuthContext"; // ✅ import AuthProvider
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "AI Prompt Marketplace",
-  description: "Buy and sell AI prompts securely on the blockchain",
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
-      </body>
-    </html>
-  );
-}
-
-*/
 
 import "./globals.css";
 import { Questrial } from "next/font/google";
@@ -35,7 +10,7 @@ const questrial = Questrial({
 });
 
 export const metadata = {
-  title: "AI Prompt Marketplace",
+  title: "Dollar Security",
   description: "Buy and sell AI prompts securely on the blockchain",
 };
 
@@ -43,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/ds-t.png" />
         {/* ✅ Google Analytics Script */}
         <Script
           strategy="afterInteractive"
