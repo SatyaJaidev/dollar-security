@@ -19,9 +19,9 @@ export function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
   const contactLinks = {
     instagram: "https://www.instagram.com/dollarrsecurity?igsh=eWN2ZndsbWljdmti&utm_source=qr",
     twitter: "https://twitter.com/yourcompany",
-    whatsapp: "https://wa.me/1234567890",
+    whatsapp: "https://wa.me/+16478858115",
     email: "mailto:Dollarsecurite@gmail.com",
-    phone: "tel:+1234567890"
+    phone: "tel:+16478858115"
   }
 
   return (

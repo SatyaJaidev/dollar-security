@@ -195,7 +195,7 @@ export function About() {
                         {/* Action Buttons - Below the number */}
                         <div className="flex flex-col gap-2">
                           <button 
-                            onClick={() => window.open("https://www.instagram.com/dollarsecurity", "_blank")}
+                            onClick={() => window.open("https://www.instagram.com/dollarrsecurity/", "_blank")}
                             className="bg-black text-white px-3 md:px-4 py-2 text-sm font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 rounded-full"
                           >
                             Apply here

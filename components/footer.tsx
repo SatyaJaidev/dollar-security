@@ -20,7 +20,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2 md:gap-3 text-black">
                 <Phone size={16} className="md:w-[18px] md:h-[18px] flex-shrink-0" />
-                <span className="text-xs md:text-sm">6478858115</span>
+                <span className="text-xs md:text-sm">+1 6478858115</span>
               </div>
               <div className="flex items-center gap-2 md:gap-3 text-black">
                 <Mail size={16} className="md:w-[18px] md:h-[18px] flex-shrink-0" />
@@ -35,12 +35,12 @@ export function Footer() {
             <ul className="space-y-1.5 md:space-y-2">
               <li>
                 <span className="text-black text-xs md:text-sm">
-                  1. Vinay peddineni
+                  1. Vinay Peddineni
                 </span>
               </li>
               <li>
                 <span className="text-black text-xs md:text-sm">
-                  2. Sahitya peddineni
+                  2. Sahitya Peddineni
                 </span>
               </li>
             </ul>
@@ -51,12 +51,12 @@ export function Footer() {
               <ul className="space-y-1.5 md:space-y-2">
                 <li>
                   <span className="text-black text-xs md:text-sm">
-                    1. Sai tarun Chowdary peddineni - Founder
+                    1. Sai Tarun Chowdary Peddineni - Founder
                   </span>
                 </li>
                 <li>
                   <span className="text-black text-xs md:text-sm">
-                    2. Yogitha akkineni
+                    2. Yogitha Akkineni
                   </span>
                 </li>
               </ul>
@@ -92,7 +92,7 @@ export function Footer() {
                 href="mailto:Saitarun1998@gmail.com"
                 className="text-black hover:text-[#FEB852] underline decoration-1 underline-offset-2 transition-colors"
               >
-                Tarun peddineni
+                Tarun Peddineni
               </a>
             </p>
             <div className="flex flex-wrap gap-4 md:gap-6 justify-center">

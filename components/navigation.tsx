@@ -58,7 +58,7 @@ export function Navigation() {
   }
 
   const handleCareersClick = () => {
-    window.open("https://www.instagram.com/dollarsecurity", "_blank")
+    window.open("https://www.instagram.com/dollarrsecurity/", "_blank")
   }
 
   const handleContactClick = () => {
