@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy via SSH
         run: |
-          ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          ssh -i key.pem -o StrictHostKeyChecking=no ubuntu@18.188.242.116<< 'EOF'
             cd dollar-security
             git pull origin main
             docker compose down
