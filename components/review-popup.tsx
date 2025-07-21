@@ -1,10 +1,11 @@
 "use client"
 
 import { Star, X, CalendarIcon } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { format } from "date-fns"
 import { toast } from "react-hot-toast"
 import { getApiUrl } from "@/lib/config"
+import { cn } from "@/lib/utils"
 
 import {
   Dialog,
@@ -113,7 +114,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[500px] bg-white border-2 border-black [&>button]:hidden">
+      <DialogContent className="sm:max-w-[500px] bg-white border-2 border-black [&>button]:hidden relative z-50">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center mb-4 text-black">
             Submit Review
@@ -173,19 +174,28 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
             <Popover>
               <PopoverTrigger asChild>
                 <Button
+                  type="button"
                   variant="outline"
-                  className="w-full justify-start text-left font-normal border-2 border-black bg-transparent text-black hover:bg-gray-100 focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852]"
+                  className={`w-full justify-start text-left font-normal border-2 border-black bg-transparent text-black hover:bg-gray-100 focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852] ${
+                    date ? "" : "text-muted-foreground"
+                  }`}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
                   {date ? format(date, "PPP") : <span className="text-black">Pick a date</span>}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 border-2 border-black">
+              <PopoverContent 
+                className="w-auto p-0 border-2 border-black" 
+                align="start"
+                sideOffset={4}
+              >
                 <Calendar
                   mode="single"
                   selected={date}
                   onSelect={setDate}
                   initialFocus
+                  disabled={(date) => date > new Date() || date < new Date("1900-01-01")}
+                  className="rounded-md"
                 />
               </PopoverContent>
             </Popover>
