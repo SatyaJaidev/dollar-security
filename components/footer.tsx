@@ -68,14 +68,14 @@ export function Footer() {
             <h4 className="text-base md:text-lg font-semibold text-black mb-3 md:mb-4">Company</h4>
             <ul className="space-y-1.5 md:space-y-2">
               <li>
-                <Link href="/privacy" className="text-black hover:text-[#FEB852] text-xs md:text-sm transition-colors">
+                <span className="text-black text-xs md:text-sm cursor-default">
                   Privacy Policy
-                </Link>
+                </span>
               </li>
               <li>
-                <Link href="/terms" className="text-black hover:text-[#FEB852] text-xs md:text-sm transition-colors">
+                <span className="text-black text-xs md:text-sm cursor-default">
                   Terms of Service
-                </Link>
+                </span>
               </li>
             </ul>
           </div>
