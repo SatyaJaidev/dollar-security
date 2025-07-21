@@ -199,7 +199,10 @@ export function Navigation() {
                 gap: visible ? 2 : 4,
                 padding: visible ? "0 8px" : "0 16px",
               }}
-              onClick={() => setIsReviewOpen(true)}
+              onClick={() => {
+                setIsReviewOpen(true)
+                console.log("Opening review form")
+              }}
             >
               <span>Feedback</span><ArrowUpRight size={visible ? 16 : 24} color="#FEB852" />
             </div>

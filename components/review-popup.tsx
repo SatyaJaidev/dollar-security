@@ -1,7 +1,7 @@
 "use client"
 
 import { Star, X, CalendarIcon } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { format } from "date-fns"
 import { toast } from "react-hot-toast"
 import { getApiUrl } from "@/lib/config"
@@ -40,6 +40,10 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
     reviewerName: "",
     message: ""
   })
+
+  useEffect(() => {
+    console.log("Review popup isOpen:", isOpen)
+  }, [isOpen])
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -113,7 +117,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[500px] bg-white border-2 border-black [&>button]:hidden relative z-50">
+      <DialogContent className="sm:max-w-[500px] bg-white border-2 border-black [&>button]:hidden">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center mb-4 text-black">
             Submit Review
