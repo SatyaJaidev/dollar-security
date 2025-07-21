@@ -122,7 +122,7 @@ export function Pricing() {
                 name="pincode" 
                 value={formData.pincode} 
                 onChange={handleChange} 
-                placeholder="Pincode" 
+                placeholder="Zip code" 
                 className="w-full border-2 border-gray-400 bg-transparent text-white placeholder:text-gray-300 focus:border-[#FEB852] px-2 py-2 md:py-3 text-sm outline-none rounded-lg transition-colors" 
               />
             </div>
@@ -146,7 +146,7 @@ export function Pricing() {
               name="jobTitle" 
               value={formData.jobTitle} 
               onChange={handleChange} 
-              placeholder="Job Title" 
+              placeholder="Location" 
               className="w-full border-2 border-gray-400 bg-transparent text-white placeholder:text-gray-300 focus:border-[#FEB852] px-2 py-2 md:py-3 text-sm outline-none rounded-lg transition-colors" 
             />
             <textarea 

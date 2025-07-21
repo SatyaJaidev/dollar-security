@@ -96,15 +96,15 @@ export function Footer() {
               </a>
             </p>
             <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
-              <Link href="/sitemap" className="text-black hover:text-[#FEB852] text-xs md:text-sm transition-colors">
+              <span className="text-black cursor-default text-xs md:text-sm">
                 Sitemap
-              </Link>
-              <Link href="/support" className="text-black hover:text-[#FEB852] text-xs md:text-sm transition-colors">
+              </span>
+              <span className="text-black cursor-default text-xs md:text-sm">
                 Support
-              </Link>
-              <Link href="/feedback" className="text-black hover:text-[#FEB852] text-xs md:text-sm transition-colors">
+              </span>
+              <span className="text-black cursor-default text-xs md:text-sm">
                 Feedback
-              </Link>
+              </span>
             </div>
           </div>
           

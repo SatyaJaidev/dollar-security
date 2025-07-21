@@ -60,7 +60,7 @@ export function RazorDifference() {
 
   const handleCallNow = () => {
     // For mobile devices, this will open the phone dialer
-    window.location.href = "tel:+1-800-SECURITY"
+    window.location.href = "tel:+16478858115"
   }
 
   const handleBookEstimate = () => {

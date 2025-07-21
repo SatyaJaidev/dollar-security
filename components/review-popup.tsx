@@ -128,7 +128,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
           <div className="space-y-4">
             <Input
               type="text"
-              placeholder="Customer Name"
+              placeholder="Client Name"
               value={formData.customerName}
               onChange={(e) => handleInputChange("customerName", e.target.value)}
               className="border-2 border-black bg-transparent text-black placeholder:text-black focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852]"

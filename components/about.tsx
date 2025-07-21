@@ -7,13 +7,13 @@ const cardData = [
   {
     title: "Residential",
     desc: "Safe homes, day and night. Our trained guards patrol, report, and deter giving families peace of mind with visible protection and body-cam accountability.",
-    image: "/Residential.png",
+    image: "/Res.png",
     icon: Home,
   },
   {
     title: "Cresecent / Home Care",
     desc: "Security guards are trained to respond quickly to security breaches and emergencies, ensuring that any potential threats are dealt with swiftly and effectively.",
-    image: "/Homecare.png",
+    image: "/Hom.png",
     icon: HeartHandshake,
   },
   {
@@ -25,19 +25,19 @@ const cardData = [
   {
     title: "Construction Site",
     desc: "Guarding high-value sites from theft, vandalism, and unauthorized access. We secure your equipment, materials, and boundaries with 24/7 coverage and site-specific patrol strategies.",
-    image: "/Construction.png",
+    image: "/Const.png",
     icon: HardHat,
   },
   {
     title: "Commercial & Retail",
     desc: "We secure Canadian businesses and retail spaces with licensed guards trained in theft prevention, access control, and reporting delivering safety, professionalism, and loss reduction daily.",
-    image: "/Commercial.png",
+    image: "/Com.png",
     icon: ShoppingCart,
   },
   {
     title: "Hospitality & Hotel",
     desc: "We provide discreet, professional security for hotels and hospitality venues managing guest safety, access control, and emergencies while maintaining a calm, welcoming presence 24/7.",
-    image: "/Hospitality.png",
+    image: "/Hos.png",
     icon: Building,
   },
   {
@@ -55,7 +55,7 @@ const cardData = [
   {
     title: "Specilized Security",
     desc: "From VIP protection to high-risk sites, we provide tailored security solutions using trained personnel, advanced tech, and strategic planning built to meet unique needs.",
-    image: "/Residential.png",
+    image: "/Spe.png",
     icon: ShieldCheck,
   },
   {
