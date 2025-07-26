@@ -1,6 +1,6 @@
 "use client"
 
-import { Star, X, CalendarIcon } from "lucide-react"
+import { Star, X } from "lucide-react"
 import { useState, useEffect } from "react"
 import { format } from "date-fns"
 import { toast } from "react-hot-toast"
@@ -16,12 +16,6 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Calendar } from "@/components/ui/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
 
 interface ReviewPopupProps {
   isOpen: boolean
@@ -48,10 +42,9 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
-      [field]: value.trimStart(), // prevent accidental leading spaces
+      [field]: value.trimStart(),
     }))
-    
-    // Clear guard name error when user types
+
     if (field === "guardName" && guardNameError) {
       setGuardNameError(false)
     }
@@ -63,6 +56,11 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
       return
     }
 
+    if (!date) {
+      toast.error("Please select a date.")
+      return
+    }
+
     try {
       const url = getApiUrl("/guards/submit-feedback")
       const res = await fetch(url, {
@@ -70,7 +68,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          guardName: formData.guardName.trim(), // ✅ force trim here too
+          guardName: formData.guardName.trim(),
           rating,
           date,
         }),
@@ -82,7 +80,6 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
         onClose()
         handleReset()
       } else {
-        // Check if it's a guard not found error
         if (res.status === 404) {
           setGuardNameError(true)
           toast.error("Guard not found. Please check the guard name.")
@@ -117,7 +114,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[500px] bg-white border-2 border-black overflow-visible z-40 [&>button]:hidden">
+      <DialogContent className="sm:max-w-[500px] bg-white border-2 border-black [&>button]:hidden">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center mb-4 text-black">
             Submit Review
@@ -173,27 +170,16 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
               className="border-2 border-black bg-transparent text-black placeholder:text-black focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852]"
             />
 
-            {/* Date Picker */}
-            <Popover>
-            <PopoverTrigger>
-              <div className="w-full">
-                <Button
-                 variant="outline"
-                 className="w-full justify-start text-left font-normal border-2 border-black bg-transparent text-black hover:bg-gray-100 focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852]"
-                >
-                <CalendarIcon className="mr-2 h-4 w-4" />
-                  {date ? format(date, "PPP") : <span className="text-black">Pick a date</span>}
-                </Button>
-              </div>
-            </PopoverTrigger>
-              <PopoverContent className="z-50 w-auto p-0 border-2 border-black">
-                <Calendar
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                />
-              </PopoverContent>
-            </Popover>
+            {/* Date Input */}
+            <Input
+              type="date"
+              value={date ? format(date, "yyyy-MM-dd") : ""}
+              onChange={(e) => {
+                const selected = new Date(e.target.value)
+                setDate(selected)
+              }}
+              className="border-2 border-black bg-transparent text-black placeholder:text-black focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852]"
+            />
 
             {/* Star Rating */}
             <div className="space-y-2">
