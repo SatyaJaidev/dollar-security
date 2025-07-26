@@ -117,7 +117,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[500px] bg-white border-2 border-black [&>button]:hidden">
+      <DialogContent className="sm:max-w-[500px] bg-white border-2 border-black overflow-visible z-40 [&>button]:hidden">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center mb-4 text-black">
             Submit Review
@@ -184,7 +184,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
                   {date ? format(date, "PPP") : <span className="text-black">Pick a date</span>}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 border-2 border-black">
+              <PopoverContent className="z-50 w-auto p-0 border-2 border-black">
                 <Calendar
                   mode="single"
                   selected={date}
