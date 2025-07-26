@@ -175,21 +175,22 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
 
             {/* Date Picker */}
             <Popover>
-              <PopoverTrigger asChild>
+            <PopoverTrigger>
+              <div className="w-full">
                 <Button
-                  variant="outline"
-                  className="w-full justify-start text-left font-normal border-2 border-black bg-transparent text-black hover:bg-gray-100 focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852]"
+                 variant="outline"
+                 className="w-full justify-start text-left font-normal border-2 border-black bg-transparent text-black hover:bg-gray-100 focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852]"
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                <CalendarIcon className="mr-2 h-4 w-4" />
                   {date ? format(date, "PPP") : <span className="text-black">Pick a date</span>}
                 </Button>
-              </PopoverTrigger>
+              </div>
+            </PopoverTrigger>
               <PopoverContent className="z-50 w-auto p-0 border-2 border-black">
                 <Calendar
                   mode="single"
                   selected={date}
                   onSelect={setDate}
-                  initialFocus
                 />
               </PopoverContent>
             </Popover>
