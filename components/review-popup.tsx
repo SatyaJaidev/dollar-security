@@ -2,7 +2,6 @@
 
 import { Star, X } from "lucide-react"
 import { useState, useEffect } from "react"
-import { format } from "date-fns"
 import { toast } from "react-hot-toast"
 import { getApiUrl } from "@/lib/config"
 
@@ -25,7 +24,7 @@ interface ReviewPopupProps {
 export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
   const [rating, setRating] = useState(0)
   const [hoveredRating, setHoveredRating] = useState(0)
-  const [date, setDate] = useState<Date>()
+  const [date, setDate] = useState("")
   const [guardNameError, setGuardNameError] = useState(false)
   const [formData, setFormData] = useState({
     customerName: "",
@@ -36,7 +35,9 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
   })
 
   useEffect(() => {
-    console.log("Review popup isOpen:", isOpen)
+    if (!isOpen) {
+      handleReset()
+    }
   }, [isOpen])
 
   const handleInputChange = (field: string, value: string) => {
@@ -103,7 +104,7 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
     })
     setRating(0)
     setHoveredRating(0)
-    setDate(undefined)
+    setDate("")
     setGuardNameError(false)
   }
 
@@ -173,11 +174,9 @@ export function ReviewPopup({ isOpen, onClose }: ReviewPopupProps) {
             {/* Date Input */}
             <Input
               type="date"
-              value={date ? format(date, "yyyy-MM-dd") : ""}
-              onChange={(e) => {
-                const selected = new Date(e.target.value)
-                setDate(selected)
-              }}
+              placeholder="Date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
               className="border-2 border-black bg-transparent text-black placeholder:text-black focus:ring-2 focus:ring-[#FEB852] focus:border-[#FEB852]"
             />
 
